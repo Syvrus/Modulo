@@ -2,8 +2,6 @@
 const Discord = require("discord.js");
 //const cloudinary = require("cloudinary-core");
 
-const TOKEN = "NTY2MzE1ODUyMjU3ODIwNjkz.XLFXDQ.uFWHBGK35y9qepeB63eVBrmDNbk";
-
 PREFIX = "$";
 
 var bot = new Discord.Client();
