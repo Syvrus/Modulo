@@ -1,0 +1,17 @@
+{
+  "name": "modulo",
+  "version": "1.0.0",
+  "description": "Modulo Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Syvrus",
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary-core": "^2.6.3",
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "node-opus": "^0.3.1"
+  }
+}
