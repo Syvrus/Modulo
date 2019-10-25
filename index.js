@@ -21,43 +21,27 @@ bot.on("message", function(message){
     message.channel.send(args[0].toLowerCase());
     
     switch (args[0].toLowerCase()){
-        //Rolls user-prompted dice amount that are user-prompted dice sides
-        case "roll":
-        case "r":
-            //formatted input is <int>d<int>
-            var amount = Number(args[1].substring(0,args[1].indexOf("d")));//First <int> is amount of dice
-            var dice = Number(args[1].substring(args[1].indexOf("d") + 1));//Second <int> sides on dice
-            var eq = "";
-            var tot = 0;
-            for (var i = 0; i < (amount - 1); i++){
-                var val = Math.ceil(Math.random() * dice);
-                tot += val;
-                eq += (val.toString() + " + ");
-            }
-            val = Math.ceil(Math.random() * dice);
-            tot += val;
-            eq += val.toString() + " = " + tot.toString();
-            message.channel.send("Rolling...");
-            message.channel.send("Your results are " + eq);
-        break;
-        //Same as roll but with suspense
-        case "sroll":
-        case "sr":
-            var amount = Number(args[1].substring(0,args[1].indexOf("d")));
-            var dice = Number(args[1].substring(args[1].indexOf("d") + 1));
-            var eq = "||";
-            var tot = 0;
-            for (var i = 0; i < (amount - 1); i++){
-                var val = Math.ceil(Math.random() * dice);
-                tot += val;
-                eq += (val.toString() + " + ");
-            }
-            val = Math.ceil(Math.random() * dice);
-            tot += val;
-            eq += val.toString() + "|| = ||" + tot.toString();
-            message.channel.send("Rolling...");
-            message.channel.send("Your results are " + eq + "||");
-        break;
+	    //Rolls user-prompted dice amount that are user-prompted dice sides
+	    case "roll":
+	    case "r":
+		message.channel.send("Rolling...");
+		//formatted input is <int>d<int>
+            	var amount = Number(args[1].substring(0,args[1].indexOf("d")));//First <int> is amount of dice
+            	var sides = Number(args[1].substring(args[1].indexOf("d") + 1));//Second <int> sides on dice
+            	var roll = require('./Roll.js');
+	    	var result = new roll(amount, sides);
+		message.channel.send("Your results are " + roll.eq);
+        	break;
+        	//Same as roll but with suspense
+        	case "sroll":
+        	case "sr":
+		    message.channel.send("Rolling...");
+		    var amount = Number(args[1].substring(0,args[1].indexOf("d")));
+		    var sides = Number(args[1].substring(args[1].indexOf("d") + 1));
+		    var roll = require('./Roll.js');
+		    var result = new roll(amount, sides);
+		    message.channel.send("Your results are ||" + roll.eq + "||");
+		    break;
         //Generates character sheet with randomly generated elements
         case "generate":
         case "gen":
